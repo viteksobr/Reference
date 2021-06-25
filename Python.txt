@@ -1,0 +1,34 @@
+Python code repo - useful snippets to be reused
+
+# Find differences in two lists
+def difference(a, b):
+    set_a = set(a)
+    set_b = set(b)
+    comparison = set_a.difference(set_b)
+    return list(comparison)
+
+
+difference([1,2,3], [1,2,4]) # [3]
+--
+
+# API call with OAuth
+## API keys look like:
+consumer_key='aaaaBBBBBaaaaaaBBBBBBaaaaaBBBBBB'
+consumer_secret='aaaBBBBBaaaaaBBBBBaaaaaaBBBBBBBaaaaaaBBBBBBBB'
+access_token='ddddddddd-xxxXXxxXXXXXxxxxxXXXXxxxxxXXXXXxxxxxxxxx'
+access_token_secret ='XXxxXXXXXxxxXXXxxXXXXxxxxxXXXXXxxxxxxxxx'
+## Define user name
+user='@datasciencectrl'
+## Defining extract_twitter_data function which extracts data of twitter user
+def extract_twitter_data(user):
+
+    # Create authentication token
+    # for more details visit the following webpage: http://tweepy.readthedocs.org/en/v2.3.0/auth_tutorial.html#auth-tut...
+    auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+    auth.set_access_token(access_token, access_token_secret)
+
+    ## Call the API and get data from twitter user
+    api = tweepy.API(auth)
+    twitterData = api.get_user(user)
+    --
+    
