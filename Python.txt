@@ -35,7 +35,55 @@ df.describe()
 df.replace('no', '')
 --
 
+# Change string to date type
 
+# format 2020-01-31
+df['date_col_name'] = pd.to_datetime(df['date_col_name'], 
+                        format='Y%m%d')
+--
+
+# See cols with non-unique values and which ones
+
+for col in df.columns:
+    print(col, df[col].nunique(), len(df))
+--
+
+# Dropping cols
+
+df.drop(['col_name']), axis=1, inplace=True
+--
+
+# Cleaning up strings
+
+# mapping wrong values to correct ones
+diversity_map = {1: 'yes', 0: 'no'}
+termd_map = {1: 'yes', 0: 'no'}
+hispanic_latino_map = {'No': 'no', 'Yes': 'yes', 'no': 'no', 'yes': 'yes'}
+df['FromDiversityJobFairID'].replace(diversity_map, inplace=True)
+df['Termd'].replace(termd_map, inplace=True)
+df['HispanicLatino'].replace(hispanic_latino_map, inplace=True)
+
+# removing trailing spaces
+df['Position'] = df['Position'].str.strip()
+df['Department'] = df['Department'].str.strip()
+--
+
+# Show all columns
+
+df.columns
+--
+
+# Rename column names
+
+new_col_names = {'old_col_name': 'new_col_name', 'old_col_name2': 'new_col_name2'}
+
+df = df.rename(columns=new_col_names)
+--
+
+# Group by simple
+
+df.groupby('col_name').mean() # or sum, min, man, count, median
+--
 
 # Select column
 
