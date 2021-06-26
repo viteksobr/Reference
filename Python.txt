@@ -1,5 +1,18 @@
 Python code repo - useful snippets to be reused
 
+# Select column
+
+df['col_name']
+--
+
+# Filtering
+
+df.query('col_name>100')
+
+# while selecting columns
+f.loc[df.col_name > 100, ['col_name2', 'col_name3']]
+--
+
 # Find differences in two lists
 def difference(a, b):
     set_a = set(a)
