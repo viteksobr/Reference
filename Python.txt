@@ -1,5 +1,42 @@
 Python code repo - useful snippets to be reused
 
+# Read and write csv/json files
+
+pd.read_csv('path/file.csv')
+df.to_csv('path/file2.csv')
+
+pd.read_json('file.json')
+df.to_json('path/file.csv')
+--
+
+# Shape of data frame
+
+df.info()
+--
+
+# Select top/bottom rows
+
+# top 2 rows
+df[:]2
+df.head(2)
+
+# bottom 2
+df.tail(2)
+--
+
+# Summary stats
+
+df.describe()
+--
+
+# Replace strings
+
+# no replaced by nothing
+df.replace('no', '')
+--
+
+
+
 # Select column
 
 df['col_name']
@@ -10,8 +47,26 @@ df['col_name']
 df.query('col_name>100')
 
 # while selecting columns
-f.loc[df.col_name > 100, ['col_name2', 'col_name3']]
+df.loc[df.col_name > 100, ['col_name2', 'col_name3']]
+
+df[(df.col_name > 10 & (df['col_name2] > 2)]
 --
+
+# Pivot table
+
+df.pivot_table(index='col_name', values='col_name2', aggfunc=max)
+--
+
+# Fill NA
+
+# fill with 0
+df.fillna(0)
+
+# fill forward with previous value
+df.fillna(method='ffill') # bfill for next value
+--
+
+
 
 # Find differences in two lists
 def difference(a, b):
