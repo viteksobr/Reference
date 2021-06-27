@@ -114,7 +114,10 @@ df.fillna(0)
 df.fillna(method='ffill') # bfill for next value
 --
 
+# Melt
 
+pd.melt(df, id_vars=["first","last"])
+--
 
 # Find differences in two lists
 def difference(a, b):
